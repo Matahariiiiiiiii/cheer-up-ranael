@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Ranael</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fffbe6;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+      overflow-x: hidden;
+    }
+    .sun {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, yellow 60%, orange);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    h1 {
+      font-size: 2em;
+      color: #e6ac00;
+    }
+    .button-container {
+      margin-top: 30px;
+    }
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffeb3b;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #fdd835;
+    }
+    .message {
+      margin-top: 30px;
+      font-size: 1.5em;
+    }
+    .emoji {
+      position: fixed;
+      bottom: -50px;
+      font-size: 2em;
+      animation: floatUp 3s linear infinite;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sun"></div>
+  <h1>You've been doing so well!</h1>
+  <div class="button-container">
+    <button onclick="showHearts()">Yes, you're right!</button>
+    <button onclick="showFrowns()">I don't feel that way...</button>
+  </div>
+  <div class="message" id="message"></div>
+
+  <script>
+    function spawnEmoji(emoji) {
+      for (let i = 0; i < 50; i++) {
+        const span = document.createElement('span');
+        span.className = 'emoji';
+        span.textContent = emoji;
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        document.body.appendChild(span);
+        setTimeout(() => span.remove(), 4000);
+      }
+    }
+
+    function showHearts() {
+      document.getElementById('message').textContent = "That's right! I'm so proud of you, Ranael.";
+      spawnEmoji('💛');
+    }
+
+    function showFrowns() {
+      document.getElementById('message').textContent = "That's okay too. I'm here for you, always.";
+      spawnEmoji('☹️');
+    }
+  </script>
+</body>
+</html>
